@@ -1,0 +1,115 @@
+Expanding city: pointReyes with cost 0
+Adding to the frontier: ['japan', 'medford', 'sacramento']
+The frontier is now: [(1485.187946598997, 'sacramento'), (1758.2087606367193, 'medford'), (11901.412277258452, 'japan')]
+==============
+Expanding city: sacramento with cost 1485.187946598997
+Adding to the frontier: ['modesto', 'pointReyes', 'reno', 'sanFrancisco']
+The frontier is now: [(1514.0057797851564, 'reno'), (1562.0054205972096, 'modesto'), (1647.906278887955, 'sanFrancisco'), (1758.2087606367193, 'medford'), (11901.412277258452, 'japan')]
+==============
+Expanding city: reno with cost 1514.0057797851564
+Adding to the frontier: ['sacramento', 'saltLakeCity']
+The frontier is now: [(1562.0054205972096, 'modesto'), (1601.633463749531, 'saltLakeCity'), (1647.906278887955, 'sanFrancisco'), (1758.2087606367193, 'medford'), (11901.412277258452, 'japan')]
+==============
+Expanding city: modesto with cost 1562.0054205972096
+Adding to the frontier: ['losAngeles', 'sacramento']
+The frontier is now: [(1601.633463749531, 'saltLakeCity'), (1647.906278887955, 'sanFrancisco'), (1758.2087606367193, 'medford'), (1841.9500607917882, 'losAngeles'), (11901.412277258452, 'japan')]
+==============
+Expanding city: saltLakeCity with cost 1601.633463749531
+Adding to the frontier: ['lasVegas', 'portland', 'reno']
+The frontier is now: [(1647.906278887955, 'sanFrancisco'), (1758.2087606367193, 'medford'), (1841.9500607917882, 'losAngeles'), (2353.572263555386, 'lasVegas'), (2922.157414883027, 'portland'), (11901.412277258452, 'japan')]
+==============
+Expanding city: sanFrancisco with cost 1647.906278887955
+Adding to the frontier: ['sacramento', 'sanJose']
+The frontier is now: [(1678.1591366842783, 'sanJose'), (1758.2087606367193, 'medford'), (1841.9500607917882, 'losAngeles'), (2353.572263555386, 'lasVegas'), (2922.157414883027, 'portland'), (11901.412277258452, 'japan')]
+==============
+Expanding city: sanJose with cost 1678.1591366842783
+Adding to the frontier: ['sanFrancisco', 'sanLuisObispo']
+The frontier is now: [(1758.2087606367193, 'medford'), (1836.0569440706627, 'sanLuisObispo'), (1841.9500607917882, 'losAngeles'), (2353.572263555386, 'lasVegas'), (2922.157414883027, 'portland'), (11901.412277258452, 'japan')]
+==============
+Expanding city: medford with cost 1758.2087606367193
+Adding to the frontier: ['pointReyes', 'portland']
+The frontier is now: [(1836.0569440706627, 'sanLuisObispo'), (1841.9500607917882, 'losAngeles'), (2353.572263555386, 'lasVegas'), (2922.157414883027, 'portland'), (11901.412277258452, 'japan')]
+==============
+Expanding city: sanLuisObispo with cost 1836.0569440706627
+Adding to the frontier: ['japan', 'losAngeles', 'sanJose']
+The frontier is now: [(1841.9500607917882, 'losAngeles'), (2353.572263555386, 'lasVegas'), (2922.157414883027, 'portland'), (11901.412277258452, 'japan')]
+==============
+Expanding city: losAngeles with cost 1841.9500607917882
+Adding to the frontier: ['lasVegas', 'modesto', 'sanDiego', 'sanLuisObispo']
+The frontier is now: [(1959.7984177563778, 'sanDiego'), (2353.572263555386, 'lasVegas'), (2922.157414883027, 'portland'), (11901.412277258452, 'japan')]
+==============
+Expanding city: sanDiego with cost 1959.7984177563778
+Adding to the frontier: ['losAngeles', 'phoenix']
+The frontier is now: [(2202.2781432329134, 'phoenix'), (2353.572263555386, 'lasVegas'), (2922.157414883027, 'portland'), (11901.412277258452, 'japan')]
+==============
+Expanding city: phoenix with cost 2202.2781432329134
+Adding to the frontier: ['sanDiego', 'tucson']
+The frontier is now: [(2323.762587269106, 'tucson'), (2353.572263555386, 'lasVegas'), (2922.157414883027, 'portland'), (11901.412277258452, 'japan')]
+==============
+Expanding city: tucson with cost 2323.762587269106
+Adding to the frontier: ['elPaso', 'phoenix']
+The frontier is now: [(2353.572263555386, 'lasVegas'), (2480.1830590246564, 'elPaso'), (2922.157414883027, 'portland'), (11901.412277258452, 'japan')]
+==============
+Expanding city: lasVegas with cost 2353.572263555386
+Adding to the frontier: ['losAngeles', 'saltLakeCity']
+The frontier is now: [(2480.1830590246564, 'elPaso'), (2922.157414883027, 'portland'), (11901.412277258452, 'japan')]
+==============
+Expanding city: elPaso with cost 2480.1830590246564
+Adding to the frontier: ['sanAntonio', 'santaFe', 'tucson']
+The frontier is now: [(2596.4163153360987, 'santaFe'), (2922.157414883027, 'portland'), (3014.9378347702186, 'sanAntonio'), (11901.412277258452, 'japan')]
+==============
+Expanding city: santaFe with cost 2596.4163153360987
+Adding to the frontier: ['denver', 'elPaso']
+The frontier is now: [(2801.3470392254376, 'denver'), (2922.157414883027, 'portland'), (3014.9378347702186, 'sanAntonio'), (11901.412277258452, 'japan')]
+==============
+Expanding city: denver with cost 2801.3470392254376
+Adding to the frontier: ['dallas', 'provo', 'santaFe', 'wichita']
+The frontier is now: [(2922.157414883027, 'portland'), (3014.9378347702186, 'sanAntonio'), (3097.170457355535, 'wichita'), (3609.0283181941313, 'provo'), (3697.560526742729, 'dallas'), (11901.412277258452, 'japan')]
+==============
+Expanding city: portland with cost 2922.157414883027
+Adding to the frontier: ['medford', 'saltLakeCity', 'seattle']
+The frontier is now: [(2192.9367182201067, 'seattle'), (3014.9378347702186, 'sanAntonio'), (3097.170457355535, 'wichita'), (3609.0283181941313, 'provo'), (3697.560526742729, 'dallas'), (11901.412277258452, 'japan')]
+==============
+Expanding city: seattle with cost 2192.9367182201067
+Adding to the frontier: ['portland', 'vancouver']
+The frontier is now: [(2366.0006075022147, 'vancouver'), (3014.9378347702186, 'sanAntonio'), (3097.170457355535, 'wichita'), (3609.0283181941313, 'provo'), (3697.560526742729, 'dallas'), (11901.412277258452, 'japan')]
+==============
+Expanding city: vancouver with cost 2366.0006075022147
+Adding to the frontier: ['calgary', 'seattle']
+The frontier is now: [(2633.564689305067, 'calgary'), (3014.9378347702186, 'sanAntonio'), (3097.170457355535, 'wichita'), (3609.0283181941313, 'provo'), (3697.560526742729, 'dallas'), (11901.412277258452, 'japan')]
+==============
+Expanding city: calgary with cost 2633.564689305067
+Adding to the frontier: ['vancouver', 'winnipeg']
+The frontier is now: [(2965.9464586647564, 'winnipeg'), (3014.9378347702186, 'sanAntonio'), (3097.170457355535, 'wichita'), (3609.0283181941313, 'provo'), (3697.560526742729, 'dallas'), (11901.412277258452, 'japan')]
+==============
+Expanding city: winnipeg with cost 2965.9464586647564
+Adding to the frontier: ['calgary', 'minneapolis', 'saultSteMarie']
+The frontier is now: [(3014.9378347702186, 'sanAntonio'), (3097.170457355535, 'wichita'), (3118.3239029042898, 'minneapolis'), (3609.0283181941313, 'provo'), (3697.560526742729, 'dallas'), (3933.013128573053, 'saultSteMarie'), (11901.412277258452, 'japan')]
+==============
+Expanding city: sanAntonio with cost 3014.9378347702186
+Adding to the frontier: ['austin', 'elPaso', 'mexico']
+The frontier is now: [(3029.0118944873157, 'austin'), (3097.170457355535, 'wichita'), (3118.3239029042898, 'minneapolis'), (3609.0283181941313, 'provo'), (3697.560526742729, 'dallas'), (3933.013128573053, 'saultSteMarie'), (4607.68172023839, 'mexico'), (11901.412277258452, 'japan')]
+==============
+Expanding city: austin with cost 3029.0118944873157
+Adding to the frontier: ['houston', 'sanAntonio']
+The frontier is now: [(3097.170457355535, 'wichita'), (3118.3239029042898, 'minneapolis'), (3247.0443030513293, 'houston'), (3609.0283181941313, 'provo'), (3697.560526742729, 'dallas'), (3933.013128573053, 'saultSteMarie'), (4607.68172023839, 'mexico'), (11901.412277258452, 'japan')]
+==============
+Expanding city: wichita with cost 3097.170457355535
+Adding to the frontier: ['denver', 'kansasCity', 'omaha']
+The frontier is now: [(3118.3239029042898, 'minneapolis'), (3174.0, 'omaha'), (3198.956292428233, 'kansasCity'), (3247.0443030513293, 'houston'), (3609.0283181941313, 'provo'), (3697.560526742729, 'dallas'), (3933.013128573053, 'saultSteMarie'), (4607.68172023839, 'mexico'), (11901.412277258452, 'japan')]
+==============
+Expanding city: minneapolis with cost 3118.3239029042898
+Adding to the frontier: ['chicago', 'desMoines', 'winnipeg']
+The frontier is now: [(3174.0, 'omaha'), (3198.643324982933, 'desMoines'), (3198.956292428233, 'kansasCity'), (3247.0443030513293, 'houston'), (3609.0283181941313, 'provo'), (3697.560526742729, 'dallas'), (3772.132898216444, 'chicago'), (3933.013128573053, 'saultSteMarie'), (4607.68172023839, 'mexico'), (11901.412277258452, 'japan')]
+==============
+Expanding city: omaha with cost 3174.0
+omaha has been found!
+==============
+Your final route is:
+pointReyes->sacramento->modesto->losAngeles->sanDiego->phoenix->tucson->elPaso->santaFe->denver->wichita->omaha
+The total cost is: 3174.0
+The total number of nodes expanded was: 27
+
+Path: pointReyes->sacramento->modesto->losAngeles->sanDiego->phoenix->tucson->elPaso->santaFe->denver->wichita->omaha
+Total Cost: 3174.0
+Nodes Expanded: 27
