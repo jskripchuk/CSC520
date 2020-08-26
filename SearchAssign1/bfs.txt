@@ -1,0 +1,221 @@
+You have selected BFS
+Expanding city: vancouver
+Adding to the frontier: ['calgary', 'seattle']
+The frontier is now: ['calgary', 'seattle']
+==============
+Expanding city: calgary
+Adding to the frontier: ['winnipeg']
+The frontier is now: ['seattle', 'winnipeg']
+==============
+Expanding city: seattle
+Adding to the frontier: ['portland']
+The frontier is now: ['winnipeg', 'portland']
+==============
+Expanding city: winnipeg
+Adding to the frontier: ['minneapolis', 'saultSteMarie']
+The frontier is now: ['portland', 'minneapolis', 'saultSteMarie']
+==============
+Expanding city: portland
+Adding to the frontier: ['medford', 'saltLakeCity']
+The frontier is now: ['minneapolis', 'saultSteMarie', 'medford', 'saltLakeCity']
+==============
+Expanding city: minneapolis
+Adding to the frontier: ['chicago', 'desMoines']
+The frontier is now: ['saultSteMarie', 'medford', 'saltLakeCity', 'chicago', 'desMoines']
+==============
+Expanding city: saultSteMarie
+Adding to the frontier: ['toronto']
+The frontier is now: ['medford', 'saltLakeCity', 'chicago', 'desMoines', 'toronto']
+==============
+Expanding city: medford
+Adding to the frontier: ['pointReyes']
+The frontier is now: ['saltLakeCity', 'chicago', 'desMoines', 'toronto', 'pointReyes']
+==============
+Expanding city: saltLakeCity
+Adding to the frontier: ['lasVegas', 'reno']
+The frontier is now: ['chicago', 'desMoines', 'toronto', 'pointReyes', 'lasVegas', 'reno']
+==============
+Expanding city: chicago
+Adding to the frontier: ['toledo']
+The frontier is now: ['desMoines', 'toronto', 'pointReyes', 'lasVegas', 'reno', 'toledo']
+==============
+Expanding city: desMoines
+Adding to the frontier: ['omaha']
+The frontier is now: ['toronto', 'pointReyes', 'lasVegas', 'reno', 'toledo', 'omaha']
+==============
+Expanding city: toronto
+Adding to the frontier: ['buffalo', 'montreal']
+The frontier is now: ['pointReyes', 'lasVegas', 'reno', 'toledo', 'omaha', 'buffalo', 'montreal']
+==============
+Expanding city: pointReyes
+Adding to the frontier: ['japan', 'sacramento']
+The frontier is now: ['lasVegas', 'reno', 'toledo', 'omaha', 'buffalo', 'montreal', 'japan', 'sacramento']
+==============
+Expanding city: lasVegas
+Adding to the frontier: ['losAngeles']
+The frontier is now: ['reno', 'toledo', 'omaha', 'buffalo', 'montreal', 'japan', 'sacramento', 'losAngeles']
+==============
+Expanding city: reno
+Adding to the frontier: []
+The frontier is now: ['toledo', 'omaha', 'buffalo', 'montreal', 'japan', 'sacramento', 'losAngeles']
+==============
+Expanding city: toledo
+Adding to the frontier: []
+The frontier is now: ['omaha', 'buffalo', 'montreal', 'japan', 'sacramento', 'losAngeles']
+==============
+Expanding city: omaha
+Adding to the frontier: ['wichita']
+The frontier is now: ['buffalo', 'montreal', 'japan', 'sacramento', 'losAngeles', 'wichita']
+==============
+Expanding city: buffalo
+Adding to the frontier: ['albanyNY', 'cleveland']
+The frontier is now: ['montreal', 'japan', 'sacramento', 'losAngeles', 'wichita', 'albanyNY', 'cleveland']
+==============
+Expanding city: montreal
+Adding to the frontier: []
+The frontier is now: ['japan', 'sacramento', 'losAngeles', 'wichita', 'albanyNY', 'cleveland']
+==============
+Expanding city: japan
+Adding to the frontier: ['sanLuisObispo']
+The frontier is now: ['sacramento', 'losAngeles', 'wichita', 'albanyNY', 'cleveland', 'sanLuisObispo']
+==============
+Expanding city: sacramento
+Adding to the frontier: ['modesto', 'sanFrancisco']
+The frontier is now: ['losAngeles', 'wichita', 'albanyNY', 'cleveland', 'sanLuisObispo', 'modesto', 'sanFrancisco']
+==============
+Expanding city: losAngeles
+Adding to the frontier: ['sanDiego']
+The frontier is now: ['wichita', 'albanyNY', 'cleveland', 'sanLuisObispo', 'modesto', 'sanFrancisco', 'sanDiego']
+==============
+Expanding city: wichita
+Adding to the frontier: ['denver', 'kansasCity']
+The frontier is now: ['albanyNY', 'cleveland', 'sanLuisObispo', 'modesto', 'sanFrancisco', 'sanDiego', 'denver', 'kansasCity']
+==============
+Expanding city: albanyNY
+Adding to the frontier: ['boston']
+The frontier is now: ['cleveland', 'sanLuisObispo', 'modesto', 'sanFrancisco', 'sanDiego', 'denver', 'kansasCity', 'boston']
+==============
+Expanding city: cleveland
+Adding to the frontier: ['dayton', 'philadelphia']
+The frontier is now: ['sanLuisObispo', 'modesto', 'sanFrancisco', 'sanDiego', 'denver', 'kansasCity', 'boston', 'dayton', 'philadelphia']
+==============
+Expanding city: sanLuisObispo
+Adding to the frontier: ['sanJose']
+The frontier is now: ['modesto', 'sanFrancisco', 'sanDiego', 'denver', 'kansasCity', 'boston', 'dayton', 'philadelphia', 'sanJose']
+==============
+Expanding city: modesto
+Adding to the frontier: []
+The frontier is now: ['sanFrancisco', 'sanDiego', 'denver', 'kansasCity', 'boston', 'dayton', 'philadelphia', 'sanJose']
+==============
+Expanding city: sanFrancisco
+Adding to the frontier: []
+The frontier is now: ['sanDiego', 'denver', 'kansasCity', 'boston', 'dayton', 'philadelphia', 'sanJose']
+==============
+Expanding city: sanDiego
+Adding to the frontier: ['phoenix']
+The frontier is now: ['denver', 'kansasCity', 'boston', 'dayton', 'philadelphia', 'sanJose', 'phoenix']
+==============
+Expanding city: denver
+Adding to the frontier: ['dallas', 'provo', 'santaFe']
+The frontier is now: ['kansasCity', 'boston', 'dayton', 'philadelphia', 'sanJose', 'phoenix', 'dallas', 'provo', 'santaFe']
+==============
+Expanding city: kansasCity
+Adding to the frontier: ['indianapolis', 'tulsa']
+The frontier is now: ['boston', 'dayton', 'philadelphia', 'sanJose', 'phoenix', 'dallas', 'provo', 'santaFe', 'indianapolis', 'tulsa']
+==============
+Expanding city: boston
+Adding to the frontier: ['newHaven']
+The frontier is now: ['dayton', 'philadelphia', 'sanJose', 'phoenix', 'dallas', 'provo', 'santaFe', 'indianapolis', 'tulsa', 'newHaven']
+==============
+Expanding city: dayton
+Adding to the frontier: []
+The frontier is now: ['philadelphia', 'sanJose', 'phoenix', 'dallas', 'provo', 'santaFe', 'indianapolis', 'tulsa', 'newHaven']
+==============
+Expanding city: philadelphia
+Adding to the frontier: ['europe', 'newYork', 'uk', 'washington']
+The frontier is now: ['sanJose', 'phoenix', 'dallas', 'provo', 'santaFe', 'indianapolis', 'tulsa', 'newHaven', 'europe', 'newYork', 'uk', 'washington']
+==============
+Expanding city: sanJose
+Adding to the frontier: []
+The frontier is now: ['phoenix', 'dallas', 'provo', 'santaFe', 'indianapolis', 'tulsa', 'newHaven', 'europe', 'newYork', 'uk', 'washington']
+==============
+Expanding city: phoenix
+Adding to the frontier: ['tucson']
+The frontier is now: ['dallas', 'provo', 'santaFe', 'indianapolis', 'tulsa', 'newHaven', 'europe', 'newYork', 'uk', 'washington', 'tucson']
+==============
+Expanding city: dallas
+Adding to the frontier: ['houston']
+The frontier is now: ['provo', 'santaFe', 'indianapolis', 'tulsa', 'newHaven', 'europe', 'newYork', 'uk', 'washington', 'tucson', 'houston']
+==============
+Expanding city: provo
+Adding to the frontier: []
+The frontier is now: ['santaFe', 'indianapolis', 'tulsa', 'newHaven', 'europe', 'newYork', 'uk', 'washington', 'tucson', 'houston']
+==============
+Expanding city: santaFe
+Adding to the frontier: ['elPaso']
+The frontier is now: ['indianapolis', 'tulsa', 'newHaven', 'europe', 'newYork', 'uk', 'washington', 'tucson', 'houston', 'elPaso']
+==============
+Expanding city: indianapolis
+Adding to the frontier: []
+The frontier is now: ['tulsa', 'newHaven', 'europe', 'newYork', 'uk', 'washington', 'tucson', 'houston', 'elPaso']
+==============
+Expanding city: tulsa
+Adding to the frontier: ['ftWorth', 'memphis']
+The frontier is now: ['newHaven', 'europe', 'newYork', 'uk', 'washington', 'tucson', 'houston', 'elPaso', 'ftWorth', 'memphis']
+==============
+Expanding city: newHaven
+Adding to the frontier: []
+The frontier is now: ['europe', 'newYork', 'uk', 'washington', 'tucson', 'houston', 'elPaso', 'ftWorth', 'memphis']
+==============
+Expanding city: europe
+Adding to the frontier: []
+The frontier is now: ['newYork', 'uk', 'washington', 'tucson', 'houston', 'elPaso', 'ftWorth', 'memphis']
+==============
+Expanding city: newYork
+Adding to the frontier: []
+The frontier is now: ['uk', 'washington', 'tucson', 'houston', 'elPaso', 'ftWorth', 'memphis']
+==============
+Expanding city: uk
+Adding to the frontier: []
+The frontier is now: ['washington', 'tucson', 'houston', 'elPaso', 'ftWorth', 'memphis']
+==============
+Expanding city: washington
+Adding to the frontier: ['raleigh']
+The frontier is now: ['tucson', 'houston', 'elPaso', 'ftWorth', 'memphis', 'raleigh']
+==============
+Expanding city: tucson
+Adding to the frontier: []
+The frontier is now: ['houston', 'elPaso', 'ftWorth', 'memphis', 'raleigh']
+==============
+Expanding city: houston
+Adding to the frontier: ['austin', 'newOrleans']
+The frontier is now: ['elPaso', 'ftWorth', 'memphis', 'raleigh', 'austin', 'newOrleans']
+==============
+Expanding city: elPaso
+Adding to the frontier: ['sanAntonio']
+The frontier is now: ['ftWorth', 'memphis', 'raleigh', 'austin', 'newOrleans', 'sanAntonio']
+==============
+Expanding city: ftWorth
+Adding to the frontier: []
+The frontier is now: ['memphis', 'raleigh', 'austin', 'newOrleans', 'sanAntonio']
+==============
+Expanding city: memphis
+Adding to the frontier: ['atlanta']
+The frontier is now: ['raleigh', 'austin', 'newOrleans', 'sanAntonio', 'atlanta']
+==============
+Expanding city: raleigh
+Adding to the frontier: ['charlotte']
+The frontier is now: ['austin', 'newOrleans', 'sanAntonio', 'atlanta', 'charlotte']
+==============
+Expanding city: austin
+Adding to the frontier: []
+The frontier is now: ['newOrleans', 'sanAntonio', 'atlanta', 'charlotte']
+==============
+Expanding city: newOrleans
+newOrleans has been found!
+The nodes remaining in the frontier are: ['sanAntonio', 'atlanta', 'charlotte']
+==============
+Your final route is:
+vancouver->calgary->winnipeg->minneapolis->desMoines->omaha->wichita->denver->dallas->houston->newOrleans
+The total cost is:
+4497.0

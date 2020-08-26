@@ -1,0 +1,137 @@
+You have selected DFS
+Expanding city: vancouver
+Adding to the frontier: ['seattle', 'calgary']
+The frontier is now: ['seattle', 'calgary']
+==============
+Expanding city: calgary
+Adding to the frontier: ['winnipeg']
+The frontier is now: ['seattle', 'winnipeg']
+==============
+Expanding city: winnipeg
+Adding to the frontier: ['saultSteMarie', 'minneapolis']
+The frontier is now: ['seattle', 'saultSteMarie', 'minneapolis']
+==============
+Expanding city: minneapolis
+Adding to the frontier: ['desMoines', 'chicago']
+The frontier is now: ['seattle', 'saultSteMarie', 'desMoines', 'chicago']
+==============
+Expanding city: chicago
+Adding to the frontier: ['toledo']
+The frontier is now: ['seattle', 'saultSteMarie', 'desMoines', 'toledo']
+==============
+Expanding city: toledo
+Adding to the frontier: []
+The frontier is now: ['seattle', 'saultSteMarie', 'desMoines']
+==============
+Expanding city: desMoines
+Adding to the frontier: ['omaha']
+The frontier is now: ['seattle', 'saultSteMarie', 'omaha']
+==============
+Expanding city: omaha
+Adding to the frontier: ['wichita']
+The frontier is now: ['seattle', 'saultSteMarie', 'wichita']
+==============
+Expanding city: wichita
+Adding to the frontier: ['kansasCity', 'denver']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'denver']
+==============
+Expanding city: denver
+Adding to the frontier: ['santaFe', 'provo', 'dallas']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'dallas']
+==============
+Expanding city: dallas
+Adding to the frontier: ['houston']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'houston']
+==============
+Expanding city: houston
+Adding to the frontier: ['newOrleans', 'austin']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'austin']
+==============
+Expanding city: austin
+Adding to the frontier: ['sanAntonio']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'sanAntonio']
+==============
+Expanding city: sanAntonio
+Adding to the frontier: ['mexico', 'elPaso']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'elPaso']
+==============
+Expanding city: elPaso
+Adding to the frontier: ['tucson']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'tucson']
+==============
+Expanding city: tucson
+Adding to the frontier: ['phoenix']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'phoenix']
+==============
+Expanding city: phoenix
+Adding to the frontier: ['sanDiego']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanDiego']
+==============
+Expanding city: sanDiego
+Adding to the frontier: ['losAngeles']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'losAngeles']
+==============
+Expanding city: losAngeles
+Adding to the frontier: ['sanLuisObispo', 'modesto', 'lasVegas']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo', 'modesto', 'lasVegas']
+==============
+Expanding city: lasVegas
+Adding to the frontier: ['saltLakeCity']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo', 'modesto', 'saltLakeCity']
+==============
+Expanding city: saltLakeCity
+Adding to the frontier: ['reno', 'portland']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo', 'modesto', 'reno', 'portland']
+==============
+Expanding city: portland
+Adding to the frontier: ['medford']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo', 'modesto', 'reno', 'medford']
+==============
+Expanding city: medford
+Adding to the frontier: ['pointReyes']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo', 'modesto', 'reno', 'pointReyes']
+==============
+Expanding city: pointReyes
+Adding to the frontier: ['sacramento', 'japan']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo', 'modesto', 'reno', 'sacramento', 'japan']
+==============
+Expanding city: japan
+Adding to the frontier: []
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo', 'modesto', 'reno', 'sacramento']
+==============
+Expanding city: sacramento
+Adding to the frontier: ['sanFrancisco']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo', 'modesto', 'reno', 'sanFrancisco']
+==============
+Expanding city: sanFrancisco
+Adding to the frontier: ['sanJose']
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo', 'modesto', 'reno', 'sanJose']
+==============
+Expanding city: sanJose
+Adding to the frontier: []
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo', 'modesto', 'reno']
+==============
+Expanding city: reno
+Adding to the frontier: []
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo', 'modesto']
+==============
+Expanding city: modesto
+Adding to the frontier: []
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico', 'sanLuisObispo']
+==============
+Expanding city: sanLuisObispo
+Adding to the frontier: []
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans', 'mexico']
+==============
+Expanding city: mexico
+Adding to the frontier: []
+The frontier is now: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo', 'newOrleans']
+==============
+Expanding city: newOrleans
+newOrleans has been found!
+The nodes remaining in the frontier are: ['seattle', 'saultSteMarie', 'kansasCity', 'santaFe', 'provo']
+==============
+Your final route is:
+vancouver->calgary->winnipeg->minneapolis->desMoines->omaha->wichita->denver->dallas->houston->newOrleans
+The total cost is:
+4497.0
