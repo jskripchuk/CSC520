@@ -1,0 +1,25 @@
+You have selected A*
+Expanding city: lasVegas with cost 0
+Adding to the frontier: ['losAngeles', 'saltLakeCity']
+The frontier is now: [(628.5511324696572, 'losAngeles'), (1090.597699414231, 'saltLakeCity')]
+==============
+Expanding city: losAngeles with cost 628.5511324696572
+Adding to the frontier: ['lasVegas', 'modesto', 'sanDiego', 'sanLuisObispo']
+The frontier is now: [(656.5834048502409, 'sanLuisObispo'), (693.6997101514708, 'modesto'), (857.1409379010415, 'sanDiego'), (1090.597699414231, 'saltLakeCity')]
+==============
+Expanding city: sanLuisObispo with cost 656.5834048502409
+Adding to the frontier: ['japan', 'losAngeles', 'sanJose']
+The frontier is now: [(669.8224251468257, 'sanJose'), (693.6997101514708, 'modesto'), (857.1409379010415, 'sanDiego'), (1090.597699414231, 'saltLakeCity'), (11357.691520152865, 'japan')]
+==============
+Expanding city: sanJose with cost 669.8224251468257
+Adding to the frontier: ['sanFrancisco', 'sanLuisObispo']
+The frontier is now: [(675.0, 'sanFrancisco'), (693.6997101514708, 'modesto'), (857.1409379010415, 'sanDiego'), (1090.597699414231, 'saltLakeCity'), (11357.691520152865, 'japan')]
+==============
+Expanding city: sanFrancisco with cost 675.0
+sanFrancisco has been found!
+The nodes remaining in the frontier are: [(693.6997101514708, 'modesto'), (857.1409379010415, 'sanDiego'), (1090.597699414231, 'saltLakeCity'), (11357.691520152865, 'japan')]
+==============
+Your final route is:
+lasVegas->losAngeles->sanLuisObispo->sanJose->sanFrancisco
+The total cost is: 675.0
+The total number of nodes expanded was: 5
