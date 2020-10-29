@@ -48,9 +48,11 @@ rel(iPhone, compatible, surfacePro).
 
 % The Zune is not. Using closed world assumption to represent in prolog
 
+% Mapping our general relations to the wanted clause
 isa(X,Y) :-
     rel(X, isA, Y).
 
+% isA is a transitive relation
 isa(X,Y) :-
     rel(X, isA, Z),
     rel(Z, isA, Y).
@@ -59,13 +61,17 @@ isa(X,Y) :-
 isa(X,Y) :-
     rel(X, madeBy, Y).
 
+% If something is something else, and that something else is made by someone
+% Then that something was made by that someone
 isa(X,Y) :-
     rel(X, isA, Z),
     rel(Z, madeBy, Y).
 
+% Mapping our general relation to another clause
 madeBy(X,Y) :-
     rel(X, madeBy, Y).
 
+% Simliar argument to isA above
 madeBy(X,Y):-
     rel(X, isA, Z),
     rel(Z, madeBy, Y).

@@ -36,7 +36,8 @@ path_exists(Start,Dest,Visited,Path,Length) :-
 
 % Brute force approach: Find all paths and then pick the shortest
 % The setof() function generates all possible bindings of paths and lengths
-% It then forms a list Result of form [[Path, Length], [Path2, Length2]... etc]
+% It then forms a l
+ist Result of form [[Path, Length], [Path2, Length2]... etc]
 % Which we then find the minimum of using min_path
 % And then reverse it to make it from Source->Dest
 isShortest(Start,Dest,Path):-
