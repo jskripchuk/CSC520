@@ -53,9 +53,27 @@ class Graph:
             #print(self.actions)
 
             for _,action in self.actions.items():
-                print(action.preconds)
+                #print(action.preconds)
 
+                # Does this action have all of it's preconds satisfied
+                satisfied_all_preconds = True 
+                for literal in action.preconds:
+                    if literal not in self.last_layer.contents:
+                        satisfied_all_preconds = False
+                        break
+
+                # All the preconds for this action are satisfied
+                if satisfied_all_preconds:
+                    action_node = Node(action.name, new_layer)
+                    action_node.parents = [new_layer.contents[precond] for precond in action.preconds]
+                    new_layer.contents[action.name] = action_node
+
+            # Mutexes
+
+        # Adding a new state layer
         else:
+            new_layer = Layer(self.STATE_LAYER)
+
             pass
 
         new_layer.prev_layer = self.last_layer
