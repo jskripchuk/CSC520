@@ -1,8 +1,8 @@
 class Mutex:
-    def __init__(self, mutex_type ,a,b):
+    def __init__(self, mutex_type ,node_a,nobe_b):
         self.type = mutex_type
-        self.a = a
-        self.b = b
+        self.a = node_a
+        self.b = node_b
 
 class Graph:
     def __init__(self, initial_state, goal_state, actions):
@@ -19,7 +19,11 @@ class Graph:
         self.last_layer = self.root_layer
 
         self.expand()
-
+        self.expand()
+        self.expand()
+        #self.expand()
+        #self.expand()
+        #self.expand()
         print(self)
 
     def build_graph(self):
@@ -35,53 +39,92 @@ class Graph:
 
         return rep
 
-    def expand(self):
-
-        # Making a new action layer
-        if self.last_layer.layer_type == self.STATE_LAYER:
-            new_layer = Layer(self.ACT_LAYER)
+    def create_action_layer(self):
+        new_layer = Layer(self.ACT_LAYER)
             # Add persistance actions
-            perst_actions = {}
-            for key,value in self.last_layer.contents.items():
-                perst_action = Node(key, new_layer)
-                perst_action.parents.append(value)
-                perst_actions[key] = perst_action
-            
-            new_layer.contents.update(perst_actions)
+        perst_actions = {}
+        for key,value in self.last_layer.contents.items():
+            perst_action = Node(key, new_layer)
+            perst_action.parents.append(value)
+            perst_actions[key] = perst_action
+        
+        new_layer.contents.update(perst_actions)
 
-            # Add actions that could occur in this state
-            #print(self.actions)
+        # Add actions that could occur in this state
+        #print(self.actions)
 
-            for _,action in self.actions.items():
-                #print(action.preconds)
+        for _,action in self.actions.items():
+            #print(action.preconds)
 
-                # Does this action have all of it's preconds satisfied
-                satisfied_all_preconds = True 
-                for literal in action.preconds:
-                    if literal not in self.last_layer.contents:
-                        satisfied_all_preconds = False
-                        break
+            # Does this action have all of it's preconds satisfied
+            satisfied_all_preconds = True 
+            for literal in action.preconds:
+                if literal not in self.last_layer.contents:
+                    satisfied_all_preconds = False
+                    break
 
-                # All the preconds for this action are satisfied
-                if satisfied_all_preconds:
-                    action_node = Node(action.name, new_layer)
-                    action_node.parents = [new_layer.contents[precond] for precond in action.preconds]
-                    new_layer.contents[action.name] = action_node
+            # All the preconds for this action are satisfied
+            if satisfied_all_preconds:
+                action_node = Node(action.name, new_layer, False)
+                action_node.parents = [new_layer.contents[precond] for precond in action.preconds]
+                new_layer.contents[action.name] = action_node
 
             # Mutexes
-
+        return new_layer
         # Adding a new state layer
-        else:
-            new_layer = Layer(self.STATE_LAYER)
 
-            pass
+    def create_state_layer(self):
+        new_layer = Layer(self.STATE_LAYER)
+        #print("cont",new_layer.contents)
+
+        # Adding persistant literals
+        perst_literals = {}
+        for key,value in self.last_layer.contents.items():
+            if value.is_literal:
+                perst_literal = Node(key, new_layer)
+                perst_literal.parents.append(value)
+                perst_literals[key] = perst_literal
+
+        new_layer.contents.update(perst_literals)
+
+        # Adding action effects
+        for key,value in self.last_layer.contents.items():
+            if not value.is_literal:
+                effects = self.actions[key].effects
+
+                for effect in effects:
+                    if effect not in new_layer.contents:
+                        effect_node = Node(effect, new_layer)
+                    else:
+                        effect_node = new_layer.contents[effect]
+
+                    effect_node.parents.append(value)
+                    new_layer.contents[effect] = effect_node
+
+        return new_layer
+
+    def add_action_mutexes(self, new_layer):
+        print("MUTEXING")
+        print(new_layer)
+        print("MUTEXING")
+        pass
+
+    def expand(self):
+        # Making a new action layer
+        if self.last_layer.layer_type == self.STATE_LAYER:
+            new_layer = self.create_action_layer()
+            self.add_action_mutexes(new_layer)
+        else:
+            #print("YOO")
+            new_layer = self.create_state_layer()
 
         new_layer.prev_layer = self.last_layer
         self.last_layer.next_layer = new_layer
         self.last_layer = new_layer
 
 class Node:
-    def __init__(self, name, layer=None):
+    def __init__(self, name, layer=None, literal=True):
+        self.is_literal = literal
         self.name = name
         self.layer = layer
         self.parents = []
@@ -91,9 +134,10 @@ class Node:
         return self.name
 
 class Layer:
-    def __init__(self, layer_type, contents={}):
+    def __init__(self, layer_type):
         self.layer_type = layer_type
-        self.contents = contents
+        self.mutexes = []
+        self.contents = {}
         self.next_layer = None
         self.prev_layer = None
 
