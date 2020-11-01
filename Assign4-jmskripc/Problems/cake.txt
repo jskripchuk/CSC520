@@ -1,0 +1,11 @@
+InitialState [+Have(Cake)]
+
+GoalState [+Have(Cake),+Eaten(Cake)]
+
+Act [Eat(Cake)]
+Preconditions [+Have(Cake)]
+Effects [-Have(Cake),+Eaten(Cake)]
+
+Act [Bake(Cake)]
+Preconditions [-Have(Cake)]
+Effects [+Have(Cake)]

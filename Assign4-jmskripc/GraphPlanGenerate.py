@@ -1,8 +1,22 @@
+import itertools
+
 class Mutex:
-    def __init__(self, mutex_type ,node_a,nobe_b):
+    IE = "Inconsistent Effects"
+    IN = "Interference"
+    CN = "Competing Needs"
+    NL = "Negated Literals"
+    IS = "Inconsistent Support"
+
+    def __init__(self, mutex_type ,node_a,node_b):
         self.type = mutex_type
-        self.a = node_a
-        self.b = node_b
+        self.node_a = node_a
+        self.node_b = node_b
+
+        self.node_a.mutexes.append(node_b)
+        self.node_b.mutexes.append(node_a)
+
+    def __repr__(self):
+        return str((self.node_a, self.node_b))
 
 class Graph:
     def __init__(self, initial_state, goal_state, actions):
@@ -10,24 +24,33 @@ class Graph:
         self.goal_state = goal_state
         self.actions = actions
 
-        self.STATE_LAYER = "StateLayer"
-        self.ACT_LAYER = "ActLayer"
-
-        self.root_layer = Layer(self.STATE_LAYER)
+        self.root_layer = Layer(Layer.STATE_LAYER)
         self.root_layer.contents = {i: Node(i,self.root_layer) for i in self.initial_state}
+        self.root_layer.depth = 0
 
         self.last_layer = self.root_layer
 
-        self.expand()
-        self.expand()
-        self.expand()
-        #self.expand()
-        #self.expand()
-        #self.expand()
-        print(self)
+        self.depth = 1
+
+        self.build_graph()
+
+    def leveled_off(self, l1,l2):
+        same_literals = str(list(l1.contents.keys()))==str(list(l2.contents.keys()))
+        same_negated = str(l1.get_mutex_type(Mutex.NL))==str(l2.get_mutex_type(Mutex.NL))
+        same_incon_support = str(l1.get_mutex_type(Mutex.IS))==str(l2.get_mutex_type(Mutex.IS))
+        return same_literals and same_negated and same_incon_support
 
     def build_graph(self):
-        pass
+        last_state_level = self.root_layer
+        while True:
+            self.expand()
+            self.expand()
+            current_state_level = self.last_layer
+
+            if self.leveled_off(last_state_level,current_state_level):
+                break
+
+            last_state_level = current_state_level
 
     def __repr__(self):
         rep = ""
@@ -40,11 +63,12 @@ class Graph:
         return rep
 
     def create_action_layer(self):
-        new_layer = Layer(self.ACT_LAYER)
+        new_layer = Layer(Layer.ACT_LAYER)
             # Add persistance actions
         perst_actions = {}
         for key,value in self.last_layer.contents.items():
             perst_action = Node(key, new_layer)
+            perst_action.effects = [key]
             perst_action.parents.append(value)
             perst_actions[key] = perst_action
         
@@ -67,6 +91,7 @@ class Graph:
             if satisfied_all_preconds:
                 action_node = Node(action.name, new_layer, False)
                 action_node.parents = [new_layer.contents[precond] for precond in action.preconds]
+                action_node.effects = action.effects
                 new_layer.contents[action.name] = action_node
 
             # Mutexes
@@ -74,7 +99,7 @@ class Graph:
         # Adding a new state layer
 
     def create_state_layer(self):
-        new_layer = Layer(self.STATE_LAYER)
+        new_layer = Layer(Layer.STATE_LAYER)
         #print("cont",new_layer.contents)
 
         # Adding persistant literals
@@ -103,46 +128,196 @@ class Graph:
 
         return new_layer
 
+    def negate(self, literal):
+        first = literal[0]
+        negation = literal[1:]
+        if first == "+":
+            negation = "-"+negation
+        else:
+            negation = "+"+negation
+
+        return negation
+
+    # Given two lists of literals
+    # Check if a literal in one list has a negation in the other
+    # Eg: [A,B], [C,~B] = True
+    # [A,B], [C,B] = False
+    def clash(self, l1,l2):
+        for literal in l1:
+            neg = self.negate(literal)
+
+            if neg in l2:
+                return True
+
+        return False
+
+    def mutex_exists(self, layer, m_type, n1, n2):
+        for mtx in layer.mutexes:
+            if mtx.type == m_type:
+                if (mtx.node_a.name==n1 and mtx.node_b.name==n2) or (mtx.node_a.name==n2 and mtx.node_b.name==n1):
+                    return True
+
+        return False
+
+    def add_state_mutexes(self, new_layer):
+        for s1, s2 in itertools.combinations(new_layer.contents,2):
+            s1 = new_layer.contents[s1]
+            s2 = new_layer.contents[s2]
+
+            #Negated Literals
+            # A literals negation also appears
+            if s1.name == self.negate(s2.name):
+                new_mutex = Mutex(Mutex.NL, s1,s2)
+                new_layer.mutexes.append(new_mutex)
+                self.update_mutex_dict(new_layer.mutex_dict, s1,s2, Mutex.NL)
+
+            #Inconsistent Support
+            # Each possible pair of actions that could achive the two literals is mutex
+            all_mutexed = True
+            for a1 in s1.parents:
+                for a2 in s2.parents:
+                    # If there is a way to get these that are not mutex
+                    if not ((a1.name, a2.name) in a1.layer.mutex_dict or (a2.name, a1.name) in a1.layer.mutex_dict):
+                        all_mutexed = False
+                    #print(a1,a2)
+
+            if all_mutexed:
+                new_mutex = Mutex(Mutex.IS, s1,s2)
+                new_layer.mutexes.append(new_mutex)
+                self.update_mutex_dict(new_layer.mutex_dict, s1,s2, Mutex.IS)
+
+                        #print(mtx==act2)
+               # pass
+                
+    def update_mutex_dict(self, d, a1, a2, m_type):
+        if (a1.name,a2.name) in d:
+            d[(a1.name,a2.name)][m_type] = True
+        else:
+            d[(a1.name,a2.name)] = {}
+
     def add_action_mutexes(self, new_layer):
-        print("MUTEXING")
-        print(new_layer)
-        print("MUTEXING")
-        pass
+        
+
+        # Searching for mutexes
+        for a1, a2 in itertools.combinations(new_layer.contents,2):
+            a1 = new_layer.contents[a1]
+            a2 = new_layer.contents[a2]
+            #print(a1.effects,(a2,a2.effects))
+
+            #for effect in a1.effects:
+                
+
+            # Inconsistent effects
+            # One action negates the effects of the other
+            if self.clash(a1.effects, a2.effects):
+                new_mutex = Mutex(Mutex.IE, a1,a2)
+                new_layer.mutexes.append(new_mutex)
+                self.update_mutex_dict(new_layer.mutex_dict, a1,a2, Mutex.IE)
+            
+            # Interference 
+            #The effects of one action is the negation of a precondition of the other
+            #A1 effects and A2 Preconds
+            if self.clash(a1.effects, [str(precond) for precond in a2.parents]):
+                new_mutex = Mutex(Mutex.IN, a1,a2)
+                new_layer.mutexes.append(new_mutex)
+                self.update_mutex_dict(new_layer.mutex_dict, a1,a2, Mutex.IN)
+            
+            #A2 effects and A1 preconds
+            #Only do it if they're not both perst actions (avoid double counting)
+            if self.clash(a2.effects, [str(precond) for precond in a1.parents]) and not (a1.is_literal and a2.is_literal):
+                new_mutex = Mutex(Mutex.IN, a1,a2)
+                new_layer.mutexes.append(new_mutex)
+                self.update_mutex_dict(new_layer.mutex_dict, a1,a2, Mutex.IN)
+
+
+            # Competing needs
+            # One of the preconditions of one action is mutex with a precondition of the other
+
+            for s1 in a1.parents:
+                for s2 in a2.parents:
+                    # Mutex found
+                    if (s1.name, s2.name) in s1.layer.mutex_dict or (s2.name, s1.name) in a1.layer.mutex_dict:
+                        #And it isn't already in current mutex list
+                        #if not ((a1.name, a2.name) in new_layer.mutex_dict or (a2.name, a1.name) in new_layer.mutex_dict):
+                        if not ((a1.name, a2.name) in new_layer.mutex_dict and Mutex.CN in new_layer.mutex_dict[(a1.name, a2.name)]):
+                            new_mutex = Mutex(Mutex.CN, a1,a2)
+                            new_layer.mutexes.append(new_mutex)
+                            self.update_mutex_dict(new_layer.mutex_dict, a1,a2, Mutex.CN)
+                            break
+
+
+        #print(new_layer.mutexes)
 
     def expand(self):
         # Making a new action layer
-        if self.last_layer.layer_type == self.STATE_LAYER:
+        if self.last_layer.layer_type == Layer.STATE_LAYER:
             new_layer = self.create_action_layer()
             self.add_action_mutexes(new_layer)
         else:
             #print("YOO")
             new_layer = self.create_state_layer()
+            self.add_state_mutexes(new_layer)
+
+        new_layer.depth = self.depth
+
+
 
         new_layer.prev_layer = self.last_layer
         self.last_layer.next_layer = new_layer
         self.last_layer = new_layer
+
+        self.depth+=1
 
 class Node:
     def __init__(self, name, layer=None, literal=True):
         self.is_literal = literal
         self.name = name
         self.layer = layer
+        self.effects = []
         self.parents = []
+
+        #Any nodes that this node is mutex with
         self.mutexes = []
 
     def __repr__(self):
         return self.name
 
 class Layer:
+    STATE_LAYER = "StateLayer"
+    ACT_LAYER = "ActLayer"
     def __init__(self, layer_type):
+        self.depth = 0
         self.layer_type = layer_type
         self.mutexes = []
+        self.mutex_dict = {}
         self.contents = {}
         self.next_layer = None
         self.prev_layer = None
 
+    def get_mutex_type(self, mutex_type):
+        return list(filter(lambda m: m.type==mutex_type, self.mutexes))
+
+    def print_list(self,l):
+        s = ""
+        for i in l:
+            s+=str(i)+", "
+        return s[:-2]
+
     def __repr__(self):
-        return self.layer_type+": "+str(self.contents)
+        r_string = ""
+        if self.layer_type == Layer.STATE_LAYER:
+            r_string += "StateLayer: "+str(self.depth//2)+"\n"
+            r_string += "\tLiterals: "+self.print_list(list(self.contents.keys()))
+            r_string += "\n\tNegated Literals: "+self.print_list(self.get_mutex_type(Mutex.NL))
+            r_string += "\n\tInconsistent Support:"+self.print_list(self.get_mutex_type(Mutex.IS))
+        else:
+            r_string += "ActLayer: "+str(self.depth//2)+"\n"
+            r_string += "\tActions:"+self.print_list(list(self.contents.keys()))
+            r_string += "\n\tInconsistent Effects: "+self.print_list(self.get_mutex_type(Mutex.IE))
+            r_string += "\n\tInterference: "+self.print_list(self.get_mutex_type(Mutex.IN))
+            r_string += "\n\tCompeting Needs: "+self.print_list(self.get_mutex_type(Mutex.CN))
+
+        return r_string
 
 class Action:
     def __init__(self, name):
@@ -185,10 +360,44 @@ def process_input(filepath):
 
     return initial_state, goal_state, actions
 
+def goal(state):
+    return False
 
+def expand(state):
+    return []
+
+class SearchNode:
+    def __init__(self):
+        self.parent = None
+
+def extract_plan(graph):
+    print(graph.initial_state)
+    print(graph.goal_state)
+    print(graph.last_layer)
+
+    frontier = []
+
+    # Depth first search for solution
+    while frontier:
+        curr = frontier.pop()
+
+        if goal(curr):
+            return curr
+        else:
+            children = expand(curr)
+
+            for child in children:
+                frontier.append(child)
+
+# if solution:
+# return true
+#child = expand_states
+# for each child:
+#   explore()
 
 if __name__ == "__main__":
     #print("Starting Graphplan")
-    infile = "./Problems/ProblemA.txt"
+    infile = "./Problems/cake.txt"
     initial_state, goal_state, actions = process_input(infile)
     graph = Graph(initial_state, goal_state, actions)
+    extract_plan(graph)
