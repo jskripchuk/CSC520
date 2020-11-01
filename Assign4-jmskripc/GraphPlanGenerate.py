@@ -1,5 +1,11 @@
 import itertools
 
+def print_list(l):
+    s = ""
+    for i in l:
+        s+=str(i)+", "
+    return s[:-2]
+
 class Mutex:
     IE = "Inconsistent Effects"
     IN = "Interference"
@@ -248,6 +254,8 @@ class Graph:
 
         #print(new_layer.mutexes)
 
+    
+
     def expand(self):
         # Making a new action layer
         if self.last_layer.layer_type == Layer.STATE_LAYER:
@@ -297,25 +305,24 @@ class Layer:
     def get_mutex_type(self, mutex_type):
         return list(filter(lambda m: m.type==mutex_type, self.mutexes))
 
-    def print_list(self,l):
-        s = ""
-        for i in l:
-            s+=str(i)+", "
-        return s[:-2]
+    def mutex_exists(self, name_1, name_2):
+        return (name_1, name_2) in self.mutex_dict or (name_2, name_1) in self.mutex_dict
+
+    
 
     def __repr__(self):
         r_string = ""
         if self.layer_type == Layer.STATE_LAYER:
             r_string += "StateLayer: "+str(self.depth//2)+"\n"
-            r_string += "\tLiterals: "+self.print_list(list(self.contents.keys()))
-            r_string += "\n\tNegated Literals: "+self.print_list(self.get_mutex_type(Mutex.NL))
-            r_string += "\n\tInconsistent Support:"+self.print_list(self.get_mutex_type(Mutex.IS))
+            r_string += "\tLiterals: "+print_list(list(self.contents.keys()))
+            r_string += "\n\tNegated Literals: "+print_list(self.get_mutex_type(Mutex.NL))
+            r_string += "\n\tInconsistent Support:"+print_list(self.get_mutex_type(Mutex.IS))
         else:
             r_string += "ActLayer: "+str(self.depth//2)+"\n"
-            r_string += "\tActions:"+self.print_list(list(self.contents.keys()))
-            r_string += "\n\tInconsistent Effects: "+self.print_list(self.get_mutex_type(Mutex.IE))
-            r_string += "\n\tInterference: "+self.print_list(self.get_mutex_type(Mutex.IN))
-            r_string += "\n\tCompeting Needs: "+self.print_list(self.get_mutex_type(Mutex.CN))
+            r_string += "\tActions:"+print_list(list(self.contents.keys()))
+            r_string += "\n\tInconsistent Effects: "+print_list(self.get_mutex_type(Mutex.IE))
+            r_string += "\n\tInterference: "+print_list(self.get_mutex_type(Mutex.IN))
+            r_string += "\n\tCompeting Needs: "+print_list(self.get_mutex_type(Mutex.CN))
 
         return r_string
 
@@ -366,38 +373,98 @@ def goal(state):
 def expand(state):
     return []
 
+# True if all the goal states are not mutex with eachother
+def solution_possible(layer, goal_state):
+    for s1, s2 in itertools.combinations(goal_state, 2):
+        if layer.mutex_exists(s1,s2):
+            return False
+    return True
+
+
+
+# 
+def is_action_set_possible(layer, action_set):
+    for a1, a2 in itertools.combinations(action_set, 2):
+        if layer.mutex_exists(a1.name,a2.name):
+            return False
+
+    return True
+
 class SearchNode:
-    def __init__(self):
+    def __init__(self, literal_set={}):
+        self.literal_set = literal_set
+        self.action_set = {}
         self.parent = None
 
+    def __repr__(self):
+        return str(self.literal_set)
+
+def extract_layer(curr_layer, goal_node, init_set):
+    goal_state = goal_node.literal_set
+
+    if goal_state == init_set:
+        return goal_node
+    
+    if solution_possible(curr_layer, goal_state):
+        x = [curr_layer.contents[lit].parents for lit in goal_state]
+        possible_actions = []
+        
+        for z in itertools.product(*x):
+            if is_action_set_possible(curr_layer.prev_layer,z):
+                req_preconds = {}
+                for action in z:
+                    req_preconds.update({str(s):True for s in action.parents})
+
+                prev_node = SearchNode(req_preconds)
+                prev_node.action_set = {str(act) for act in z}
+                prev_node.parent = goal_node
+
+                return extract_layer(curr_layer.prev_layer.prev_layer, prev_node, init_set)
+
+        #print(possible_actions)
+
+    return False
+
 def extract_plan(graph):
-    print(graph.initial_state)
-    print(graph.goal_state)
-    print(graph.last_layer)
+    goal_set = {x:True for x in graph.goal_state}
+    init_set = {str(x):True for x in graph.initial_state}
 
-    frontier = []
+    curr_layer = graph.last_layer
+    goal_states = SearchNode(goal_set)
 
-    # Depth first search for solution
-    while frontier:
-        curr = frontier.pop()
+    plan_root = extract_layer(curr_layer,goal_states,init_set)
+    
+    current_step = plan_root
 
-        if goal(curr):
-            return curr
+    print_str = ""
+    step_num = 0
+    while True:
+        print_str+="Step: "+str(step_num)
+        if current_step.literal_set == goal_set:
+            print_str+= "\n\tGoal: "+print_list([x for x in current_step.literal_set.keys()])
+            break
         else:
-            children = expand(curr)
+            print_str+= "\n\tCurrent Literals: "+print_list([x for x in current_step.literal_set.keys()])
+            
+            no_persist = []
+            for z in [str(x) for x in current_step.action_set]:
+                if not (z[0]=="+" or z[0]=="-"):
+                    no_persist.append(z)
 
-            for child in children:
-                frontier.append(child)
+            print_str+="\n\tTake Actions: "+print_list(no_persist)
+            print_str+="\n"
 
-# if solution:
-# return true
-#child = expand_states
-# for each child:
-#   explore()
+        if current_step.parent == None:
+            break
+        
+
+        current_step = current_step.parent
+        step_num+=1
+    print(print_str)
 
 if __name__ == "__main__":
-    #print("Starting Graphplan")
-    infile = "./Problems/cake.txt"
+    infile = "./Problems/ProblemB.txt"
     initial_state, goal_state, actions = process_input(infile)
     graph = Graph(initial_state, goal_state, actions)
+    #print(graph)
     extract_plan(graph)

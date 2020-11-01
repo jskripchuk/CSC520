@@ -1,0 +1,32 @@
+StateLayer: 0
+	Literals: +Have(Cake), -Eaten(Cake)
+	Negated Literals: 
+	Inconsistent Support:
+ActLayer: 0
+	Actions:+Have(Cake), -Eaten(Cake), Eat(Cake)
+	Inconsistent Effects: (+Have(Cake), Eat(Cake)), (-Eaten(Cake), Eat(Cake))
+	Interference: (+Have(Cake), Eat(Cake)), (-Eaten(Cake), Eat(Cake))
+	Competing Needs: 
+StateLayer: 1
+	Literals: +Have(Cake), -Eaten(Cake), -Have(Cake), +Eaten(Cake)
+	Negated Literals: (+Have(Cake), -Have(Cake)), (-Eaten(Cake), +Eaten(Cake))
+	Inconsistent Support:(+Have(Cake), -Have(Cake)), (+Have(Cake), +Eaten(Cake)), (-Eaten(Cake), -Have(Cake)), (-Eaten(Cake), +Eaten(Cake))
+ActLayer: 1
+	Actions:+Have(Cake), -Eaten(Cake), -Have(Cake), +Eaten(Cake), Eat(Cake), Bake(Cake)
+	Inconsistent Effects: (+Have(Cake), -Have(Cake)), (+Have(Cake), Eat(Cake)), (-Eaten(Cake), +Eaten(Cake)), (-Eaten(Cake), Eat(Cake)), (-Have(Cake), Bake(Cake)), (Eat(Cake), Bake(Cake))
+	Interference: (+Have(Cake), -Have(Cake)), (+Have(Cake), Eat(Cake)), (+Have(Cake), Bake(Cake)), (-Eaten(Cake), +Eaten(Cake)), (-Eaten(Cake), Eat(Cake)), (-Have(Cake), Eat(Cake)), (-Have(Cake), Bake(Cake))
+	Competing Needs: (+Have(Cake), -Have(Cake)), (+Have(Cake), +Eaten(Cake)), (+Have(Cake), Bake(Cake)), (-Eaten(Cake), -Have(Cake)), (-Eaten(Cake), +Eaten(Cake)), (-Eaten(Cake), Bake(Cake)), (-Have(Cake), Eat(Cake)), (+Eaten(Cake), Eat(Cake)), (Eat(Cake), Bake(Cake))
+StateLayer: 2
+	Literals: +Have(Cake), -Eaten(Cake), -Have(Cake), +Eaten(Cake)
+	Negated Literals: (+Have(Cake), -Have(Cake)), (-Eaten(Cake), +Eaten(Cake))
+	Inconsistent Support:(+Have(Cake), -Have(Cake)), (-Eaten(Cake), -Have(Cake)), (-Eaten(Cake), +Eaten(Cake))
+ActLayer: 2
+	Actions:+Have(Cake), -Eaten(Cake), -Have(Cake), +Eaten(Cake), Eat(Cake), Bake(Cake)
+	Inconsistent Effects: (+Have(Cake), -Have(Cake)), (+Have(Cake), Eat(Cake)), (-Eaten(Cake), +Eaten(Cake)), (-Eaten(Cake), Eat(Cake)), (-Have(Cake), Bake(Cake)), (Eat(Cake), Bake(Cake))
+	Interference: (+Have(Cake), -Have(Cake)), (+Have(Cake), Eat(Cake)), (+Have(Cake), Bake(Cake)), (-Eaten(Cake), +Eaten(Cake)), (-Eaten(Cake), Eat(Cake)), (-Have(Cake), Eat(Cake)), (-Have(Cake), Bake(Cake))
+	Competing Needs: (+Have(Cake), -Have(Cake)), (+Have(Cake), Bake(Cake)), (-Eaten(Cake), -Have(Cake)), (-Eaten(Cake), +Eaten(Cake)), (-Eaten(Cake), Bake(Cake)), (-Have(Cake), Eat(Cake)), (Eat(Cake), Bake(Cake))
+StateLayer: 3
+	Literals: +Have(Cake), -Eaten(Cake), -Have(Cake), +Eaten(Cake)
+	Negated Literals: (+Have(Cake), -Have(Cake)), (-Eaten(Cake), +Eaten(Cake))
+	Inconsistent Support:(+Have(Cake), -Have(Cake)), (-Eaten(Cake), -Have(Cake)), (-Eaten(Cake), +Eaten(Cake))
+
