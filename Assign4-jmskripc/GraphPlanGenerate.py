@@ -463,7 +463,7 @@ def extract_plan(graph):
     print(print_str)
 
 if __name__ == "__main__":
-    infile = "./Problems/ProblemB.txt"
+    infile = "./Problems/ProblemA.txt"
     initial_state, goal_state, actions = process_input(infile)
     graph = Graph(initial_state, goal_state, actions)
     #print(graph)
