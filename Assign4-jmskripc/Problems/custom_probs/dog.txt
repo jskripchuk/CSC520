@@ -1,0 +1,11 @@
+InitialState [+Dog]
+
+GoalState [-Happy]
+
+Act [PlayWithDog]
+Precondition [+Dog]
+Effect [+Happy]
+
+Act [DonateDogToCharity]
+Precondition [+Happy,+Dog]
+Effect [-Dog]

@@ -1,3 +1,5 @@
+GraphPlan graph for ./Problems/ProblemB.txt
+
 StateLayer: 0
 	Literals: -PacketAt(A), +CarAt(B), -CarAt(A), -PacketInCar
 	Negated Literals: 
@@ -74,4 +76,3 @@ StateLayer: 8
 	Literals: -PacketAt(A), +CarAt(B), -CarAt(A), -PacketInCar, +CarAt(A), -CarAt(B), +PacketAt(A), +PacketInCar, +PacketAt(B), -PacketAt(B)
 	Negated Literals: (-PacketAt(A), +PacketAt(A)), (+CarAt(B), -CarAt(B)), (-CarAt(A), +CarAt(A)), (-PacketInCar, +PacketInCar), (+PacketAt(B), -PacketAt(B))
 	Inconsistent Support:(-PacketAt(A), +PacketAt(A)), (+CarAt(B), +CarAt(A)), (+CarAt(B), -CarAt(B)), (-CarAt(A), +CarAt(A)), (-CarAt(A), -CarAt(B)), (-PacketInCar, +PacketInCar), (+PacketAt(B), -PacketAt(B))
-

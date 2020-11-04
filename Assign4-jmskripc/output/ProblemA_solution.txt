@@ -1,0 +1,14 @@
+Solution plan for ./Problems/ProblemA.txt
+Persistance actions have been removed for simplicity.
+
+Step: 0
+	Current Literals: +CleanTable, +Hungry
+	Take Actions: Cook
+Step: 1
+	Current Literals: +Dinner, +Hungry
+	Take Actions: Eat
+Step: 2
+	Current Literals: -Hungry, -CleanTable, -Dinner
+	Take Actions: Clean
+Step: 3
+	Goal: -Hungry, +CleanTable, -Dinner

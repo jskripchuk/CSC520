@@ -1,0 +1,42 @@
+GraphPlan graph for ./Problems/custom_probs/spellcasting.txt
+
+StateLayer: 0
+	Literals: -Smart, +Ingredients
+	Negated Literals: 
+	Inconsistent Support:
+ActLayer: 0
+	Actions:-Smart, +Ingredients, CreatePotion
+	Inconsistent Effects: 
+	Interference: 
+	Competing Needs: 
+StateLayer: 1
+	Literals: -Smart, +Ingredients, +Potion
+	Negated Literals: 
+	Inconsistent Support:
+ActLayer: 1
+	Actions:-Smart, +Ingredients, +Potion, CreatePotion, DrinkPotion
+	Inconsistent Effects: (-Smart, DrinkPotion), (+Potion, DrinkPotion), (CreatePotion, DrinkPotion)
+	Interference: (-Smart, DrinkPotion), (+Potion, DrinkPotion)
+	Competing Needs: 
+StateLayer: 2
+	Literals: -Smart, +Ingredients, +Potion, -Potion, +Smart
+	Negated Literals: (-Smart, +Smart), (+Potion, -Potion)
+	Inconsistent Support:(-Smart, -Potion), (-Smart, +Smart), (+Potion, -Potion), (+Potion, +Smart)
+ActLayer: 2
+	Actions:-Smart, +Ingredients, +Potion, -Potion, +Smart, CreatePotion, DrinkPotion
+	Inconsistent Effects: (-Smart, +Smart), (-Smart, DrinkPotion), (+Potion, -Potion), (+Potion, DrinkPotion), (-Potion, CreatePotion), (CreatePotion, DrinkPotion)
+	Interference: (-Smart, +Smart), (-Smart, DrinkPotion), (+Potion, -Potion), (+Potion, DrinkPotion), (-Potion, CreatePotion), (-Potion, DrinkPotion), (+Smart, DrinkPotion)
+	Competing Needs: (-Smart, -Potion), (-Smart, +Smart), (+Potion, -Potion), (+Potion, +Smart), (-Potion, DrinkPotion), (+Smart, DrinkPotion)
+StateLayer: 3
+	Literals: -Smart, +Ingredients, +Potion, -Potion, +Smart
+	Negated Literals: (-Smart, +Smart), (+Potion, -Potion)
+	Inconsistent Support:(-Smart, -Potion), (-Smart, +Smart), (+Potion, -Potion)
+ActLayer: 3
+	Actions:-Smart, +Ingredients, +Potion, -Potion, +Smart, CreatePotion, DrinkPotion
+	Inconsistent Effects: (-Smart, +Smart), (-Smart, DrinkPotion), (+Potion, -Potion), (+Potion, DrinkPotion), (-Potion, CreatePotion), (CreatePotion, DrinkPotion)
+	Interference: (-Smart, +Smart), (-Smart, DrinkPotion), (+Potion, -Potion), (+Potion, DrinkPotion), (-Potion, CreatePotion), (-Potion, DrinkPotion), (+Smart, DrinkPotion)
+	Competing Needs: (-Smart, -Potion), (-Smart, +Smart), (+Potion, -Potion), (-Potion, DrinkPotion), (+Smart, DrinkPotion)
+StateLayer: 4
+	Literals: -Smart, +Ingredients, +Potion, -Potion, +Smart
+	Negated Literals: (-Smart, +Smart), (+Potion, -Potion)
+	Inconsistent Support:(-Smart, -Potion), (-Smart, +Smart), (+Potion, -Potion)

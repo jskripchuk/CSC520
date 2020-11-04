@@ -1,0 +1,11 @@
+InitialState [-Smart,+Ingredients]
+
+GoalState [-Potion,+Smart]
+
+Act [CreatePotion]
+Precondition [+Ingredients]
+Effect [+Potion]
+
+Act [DrinkPotion]
+Precondition [+Potion,-Smart]
+Effect [-Potion,+Smart]

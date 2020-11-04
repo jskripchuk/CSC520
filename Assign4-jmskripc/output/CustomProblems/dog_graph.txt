@@ -1,0 +1,33 @@
+GraphPlan graph for ./Problems/custom_probs/dog.txt
+
+StateLayer: 0
+	Literals: +Dog
+	Negated Literals: 
+	Inconsistent Support:
+ActLayer: 0
+	Actions:+Dog, PlayWithDog
+	Inconsistent Effects: 
+	Interference: 
+	Competing Needs: 
+StateLayer: 1
+	Literals: +Dog, +Happy
+	Negated Literals: 
+	Inconsistent Support:
+ActLayer: 1
+	Actions:+Dog, +Happy, PlayWithDog, DonateDogToCharity
+	Inconsistent Effects: (+Dog, DonateDogToCharity)
+	Interference: (+Dog, DonateDogToCharity), (PlayWithDog, DonateDogToCharity)
+	Competing Needs: 
+StateLayer: 2
+	Literals: +Dog, +Happy, -Dog
+	Negated Literals: (+Dog, -Dog)
+	Inconsistent Support:(+Dog, -Dog)
+ActLayer: 2
+	Actions:+Dog, +Happy, -Dog, PlayWithDog, DonateDogToCharity
+	Inconsistent Effects: (+Dog, -Dog), (+Dog, DonateDogToCharity)
+	Interference: (+Dog, -Dog), (+Dog, DonateDogToCharity), (-Dog, PlayWithDog), (-Dog, DonateDogToCharity), (PlayWithDog, DonateDogToCharity)
+	Competing Needs: (+Dog, -Dog), (-Dog, PlayWithDog), (-Dog, DonateDogToCharity)
+StateLayer: 3
+	Literals: +Dog, +Happy, -Dog
+	Negated Literals: (+Dog, -Dog)
+	Inconsistent Support:(+Dog, -Dog)

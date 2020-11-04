@@ -1,3 +1,5 @@
+GraphPlan graph for ./Problems/ProblemA.txt
+
 StateLayer: 0
 	Literals: +Hungry, +CleanTable
 	Negated Literals: 
@@ -47,4 +49,3 @@ StateLayer: 5
 	Literals: +Hungry, +CleanTable, +Dinner, -Hungry, -CleanTable, -Dinner
 	Negated Literals: (+Hungry, -Hungry), (+CleanTable, -CleanTable), (+Dinner, -Dinner)
 	Inconsistent Support:(+Hungry, -Hungry), (+Hungry, -CleanTable), (+Hungry, -Dinner), (+CleanTable, -CleanTable), (+Dinner, -CleanTable), (+Dinner, -Dinner)
-

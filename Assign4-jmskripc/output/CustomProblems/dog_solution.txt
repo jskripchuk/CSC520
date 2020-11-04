@@ -1,0 +1,2 @@
+Solution plan for ./Problems/custom_probs/dog.txt
+No Plan

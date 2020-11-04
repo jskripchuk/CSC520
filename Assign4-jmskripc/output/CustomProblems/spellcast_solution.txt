@@ -1,0 +1,11 @@
+Solution plan for ./Problems/custom_probs/spellcasting.txt
+Persistance actions have been removed for simplicity.
+
+Step: 0
+	Current Literals: +Ingredients, -Smart
+	Take Actions: CreatePotion
+Step: 1
+	Current Literals: +Potion, -Smart
+	Take Actions: DrinkPotion
+Step: 2
+	Goal: -Potion, +Smart

@@ -1,0 +1,20 @@
+Solution plan for ./Problems/ProblemB.txt
+Persistance actions have been removed for simplicity.
+
+Step: 0
+	Current Literals: +CarAt(B), -CarAt(A), -PacketAt(A), -PacketInCar
+	Take Actions: DriveBA, ProduceA
+Step: 1
+	Current Literals: +CarAt(A), -CarAt(B), +PacketAt(A), -PacketInCar
+	Take Actions: LoadA
+Step: 2
+	Current Literals: +CarAt(A), -CarAt(B), +PacketInCar
+	Take Actions: DriveAB
+Step: 3
+	Current Literals: +CarAt(B), +PacketInCar, -CarAt(A)
+	Take Actions: DischargeB
+Step: 4
+	Current Literals: +PacketAt(B), +CarAt(B), -CarAt(A)
+	Take Actions: DriveBA
+Step: 5
+	Goal: +PacketAt(B), +CarAt(A)
